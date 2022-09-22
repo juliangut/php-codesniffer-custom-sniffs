@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+namespace PhpCsFixer\Fixer;
+
+use PhpCsFixer\Fixer\FixerInterface;
+
+interface ConfigurableFixerInterface extends FixerInterface
+{
+    /**
+     * @param array<mixed> $configuration
+     */
+    public function configure(array $configuration): void;
+}

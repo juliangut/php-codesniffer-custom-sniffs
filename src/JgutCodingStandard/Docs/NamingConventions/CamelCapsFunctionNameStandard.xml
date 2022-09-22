@@ -1,0 +1,77 @@
+<documentation title="CamelCaps Function Name">
+    <standard>
+    <![CDATA[
+    Functions should use camelCaps format for their names.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: A function or method in camelCaps format.">
+        <![CDATA[
+function <em>doSomething</em>()
+{
+}
+        ]]>
+        </code>
+        <code title="Invalid: A function or method in snake_case format.">
+        <![CDATA[
+function <em>do_something</em>()
+{
+}
+        ]]>
+        </code>
+    </code_comparison>
+    <standard>
+    <![CDATA[
+    Only PHP's magic methods should use a double underscore prefix.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: A method not beginning with double underscore.">
+        <![CDATA[
+class Foo
+{
+    public function <em>doSomething</em>()
+    {
+    }
+}
+        ]]>
+        </code>
+        <code title="Invalid: A method beginning with double underscore.">
+        <![CDATA[
+class Foo
+{
+    public function <em>__doSomething</em>()
+    {
+    }
+}
+        ]]>
+        </code>
+    </code_comparison>
+    <standard>
+    <![CDATA[
+    Methods should not be prefixed with underscore to indicate visibility.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: A method not prefixed with underscore for visibility.">
+        <![CDATA[
+class Foo
+{
+    <em>private</em> function <em>doSomething</em>()
+    {
+    }
+}
+        ]]>
+        </code>
+        <code title="Invalid: A method prefixed with underscore for visibility.">
+        <![CDATA[
+class Foo
+{
+    function <em>_doSomething</em>()
+    {
+    }
+}
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>

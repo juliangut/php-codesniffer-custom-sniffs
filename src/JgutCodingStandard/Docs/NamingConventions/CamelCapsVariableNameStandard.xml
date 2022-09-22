@@ -1,0 +1,42 @@
+<documentation title="CamelCaps Variable Name">
+    <standard>
+    <![CDATA[
+    Variables names should use camelCaps format.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: A variable in camelCaps format.">
+        <![CDATA[
+$<em>isValid</em> = true;
+        ]]>
+        </code>
+        <code title="Invalid: A variable in snake_case format.">
+        <![CDATA[
+<em>$is_valid</em> = true;
+        ]]>
+        </code>
+    </code_comparison>
+    <standard>
+    <![CDATA[
+    Member variables should not be prefixed with underscore to indicate visibility.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: A variable not prefixed with underscore for visibility.">
+        <![CDATA[
+class Foo
+{
+    <em>private</em> bool <em>$isValid</em> = true;
+}
+        ]]>
+        </code>
+        <code title="Invalid: A method is prefixed with underscore for visibility.">
+            <![CDATA[
+class Foo
+{
+    <em>$_isValid</em> = true;
+}
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>
