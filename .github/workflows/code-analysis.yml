@@ -68,7 +68,7 @@ jobs:
         run: make lint-php
 
       - name: Run check style
-        run: make lint-ecs
+        run: make lint-phpcs && make lint-phpcs-fixer
 
       - name: Run copy/paste detection
         run: make qa-phpcpd
