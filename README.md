@@ -63,7 +63,7 @@ Function and method names should be written un camelCaps
  
  class Foo
  {
--    public method max_length(): int
+-    public function max_length(): int
 +    public function maxLength(): int
      {
      }
