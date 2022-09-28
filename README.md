@@ -52,6 +52,34 @@ It is recommended to also install [dealerdirect/phpcodesniffer-composer-installe
 
 ## Sniffs
 
+### CodeAnalysis
+
+#### EmptyStatementSniff
+
+There should not be empty statements
+
+```diff
+ <?php
+ 
+ if (\PHP_VERSION_ID >= 80_000) {
++    echo 'do something';
+ }
+```
+
+##### Configuration
+
+__catchIgnoreComment__ (string), catch statements may be allowed to be empty. Add a comment with the content of this variable, by default it's set to `@ignoreException`
+
+```diff
+ <?php
+ 
+ try {
+     curl_close(null);
+ } catch (\Throwable $exception) {
++    // @ignoreException
+ }
+```
+
 ### NamingConventions
 
 #### CamelCapsFunctionNameSniff
