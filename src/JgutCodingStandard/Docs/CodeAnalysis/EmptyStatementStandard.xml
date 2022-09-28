@@ -1,0 +1,47 @@
+<documentation title="Empty statement">
+    <standard>
+        <![CDATA[
+    Statements should not be empty.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: A non empty statement.">
+            <![CDATA[
+foreach(range(0, 9) as $number) {
+{
+    <em>echo 'number: ' . $number;</em>
+}
+        ]]>
+        </code>
+        <code title="Invalid: An empty statement.">
+            <![CDATA[
+foreach(range(0, 9) as $number) {
+}
+        ]]>
+        </code>
+    </code_comparison>
+    <standard>
+        <![CDATA[
+    Empty catch statements can be ignored.
+    ]]>
+    </standard>
+    <code_comparison>
+        <code title="Valid: An ignored empty catch statement.">
+            <![CDATA[
+try {
+    curl_close(null);
+} catch (\Throwable $exception) {
+    <em>// @ignoreException</em>
+}
+        ]]>
+        </code>
+        <code title="Invalid: A non ignored empty catch statement.">
+            <![CDATA[
+try {
+    curl_close(null);
+} catch (\Throwable $exception) {
+}
+        ]]>
+        </code>
+    </code_comparison>
+</documentation>

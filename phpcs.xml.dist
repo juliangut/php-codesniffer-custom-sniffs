@@ -85,4 +85,5 @@
     <!-- juliangut/php-codesniffer-custom-sniffs -->
     <rule ref="JgutCodingStandard.NamingConventions.CamelCapsFunctionName" />
     <rule ref="JgutCodingStandard.NamingConventions.CamelCapsVariableName" />
+    <rule ref="JgutCodingStandard.CodeAnalysis.EmptyStatement" />
 </ruleset>
