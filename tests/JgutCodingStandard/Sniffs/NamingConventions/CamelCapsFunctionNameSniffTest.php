@@ -22,7 +22,7 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
      */
     public function testSniff(
         string $filePath,
-        array $sniffProperties,
+        array $sniffProperties = [],
         ?int $line = null,
         ?string $code = null,
         ?string $message = null
@@ -71,28 +71,32 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
                 ['strict' => false],
                 12,
                 'FunctionDoubleUnderscore',
-                'Function name "__prefixedFunction" is invalid; only PHP magic functions should be prefixed with a double underscore',
+                'Function name "__prefixedFunction" is invalid;'
+                    . ' only PHP magic functions should be prefixed with a double underscore',
             ],
             'strict function double underscore prefix' => [
                 __DIR__ . '/data/CamelCapsFunctionNameDoubleUnderscorePrefix.php',
                 ['strict' => true],
                 12,
                 'FunctionDoubleUnderscore',
-                'Function name "__prefixedFunction" is invalid; only PHP magic functions should be prefixed with a double underscore',
+                'Function name "__prefixedFunction" is invalid;'
+                    . ' only PHP magic functions should be prefixed with a double underscore',
             ],
             'method double underscore prefix' => [
                 __DIR__ . '/data/CamelCapsFunctionNameDoubleUnderscorePrefix.php',
                 ['strict' => false],
                 19,
                 'MethodDoubleUnderscore',
-                'Method name "Foo::__magicPrefix" is invalid; only PHP magic methods should be prefixed with a double underscore',
+                'Method name "Foo::__magicPrefix" is invalid;'
+                    . ' only PHP magic methods should be prefixed with a double underscore',
             ],
             'strict method double underscore prefix' => [
                 __DIR__ . '/data/CamelCapsFunctionNameDoubleUnderscorePrefix.php',
                 ['strict' => true],
                 19,
                 'MethodDoubleUnderscore',
-                'Method name "Foo::__magicPrefix" is invalid; only PHP magic methods should be prefixed with a double underscore',
+                'Method name "Foo::__magicPrefix" is invalid;'
+                    . ' only PHP magic methods should be prefixed with a double underscore',
             ],
         ];
     }
@@ -105,14 +109,16 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
                 ['strict' => false],
                 14,
                 'MethodUnderscoreVisibility',
-                'Method name "Foo::_privateMethod" is invalid; use visibility modifiers instead of prefixing with underscores',
+                'Method name "Foo::_privateMethod" is invalid;'
+                    . ' use visibility modifiers instead of prefixing with underscores',
             ],
             'strict method with underscore prefix visibility' => [
                 __DIR__ . '/data/CamelCapsFunctionNameUnderscoreVisibility.php',
                 ['strict' => true],
                 14,
                 'MethodUnderscoreVisibility',
-                'Method name "Foo::_privateMethod" is invalid; use visibility modifiers instead of prefixing with underscores',
+                'Method name "Foo::_privateMethod" is invalid;'
+                    . ' use visibility modifiers instead of prefixing with underscores',
             ],
         ];
     }

@@ -74,7 +74,14 @@ abstract class AbstractSniffTestCase extends TestCase
     {
         $errors = $file->getErrors();
 
-        self::assertEmpty($errors, sprintf('No errors expected, but %d errors found.', \count($errors)));
+        self::assertEmpty(
+            $errors,
+            sprintf(
+                'No errors expected, but %d error(s) found at line(s) %s.',
+                \count($errors),
+                implode(', ', array_keys($errors))
+            )
+        );
     }
 
     protected static function assertNoSniffError(File $file, int $line): void

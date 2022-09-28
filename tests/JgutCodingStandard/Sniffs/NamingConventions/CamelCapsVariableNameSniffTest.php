@@ -22,7 +22,7 @@ final class CamelCapsVariableNameSniffTest extends AbstractSniffTestCase
      */
     public function testSniff(
         string $filePath,
-        array $sniffProperties,
+        array $sniffProperties = [],
         ?int $line = null,
         ?string $code = null,
         ?string $message = null
@@ -70,14 +70,16 @@ final class CamelCapsVariableNameSniffTest extends AbstractSniffTestCase
                 ['strict' => false],
                 14,
                 'PropertyUnderscoreVisibility',
-                'Property "_privateProperty" is invalid; use visibility modifiers instead of prefixing with underscores',
+                'Property "_privateProperty" is invalid;'
+                    . ' use visibility modifiers instead of prefixing with underscores',
             ],
             'strict property with underscore prefix visibility' => [
                 __DIR__ . '/data/CamelCapsVariableNameUnderscoreVisibility.php',
                 ['strict' => true],
                 14,
                 'PropertyUnderscoreVisibility',
-                'Property "_privateProperty" is invalid; use visibility modifiers instead of prefixing with underscores',
+                'Property "_privateProperty" is invalid;'
+                    . ' use visibility modifiers instead of prefixing with underscores',
             ],
         ];
     }
