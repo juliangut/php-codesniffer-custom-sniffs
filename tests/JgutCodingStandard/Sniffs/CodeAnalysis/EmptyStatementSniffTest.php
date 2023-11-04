@@ -18,7 +18,7 @@ final class EmptyStatementSniffTest extends AbstractSniffTestCase
     /**
      * @dataProvider sniffProvider
      *
-     * @param array<string, mixed> $sniffProperties
+     * @param array<string, string|int|bool> $sniffProperties
      */
     public function testSniff(
         string $filePath,
@@ -38,6 +38,9 @@ final class EmptyStatementSniffTest extends AbstractSniffTestCase
         }
     }
 
+    /**
+     * @return array<string, list<mixed>>
+     */
     public function sniffProvider(): array
     {
         return array_merge(
@@ -47,6 +50,9 @@ final class EmptyStatementSniffTest extends AbstractSniffTestCase
         );
     }
 
+    /**
+     * @return array<string, list<mixed>>
+     */
     protected function getSniffTestsFixed(): array
     {
         return [
@@ -56,6 +62,9 @@ final class EmptyStatementSniffTest extends AbstractSniffTestCase
         ];
     }
 
+    /**
+     * @return array<string, list<mixed>>
+     */
     protected function getSniffTestsEmptyStatements(): array
     {
         return [
@@ -97,6 +106,9 @@ final class EmptyStatementSniffTest extends AbstractSniffTestCase
         ];
     }
 
+    /**
+     * @return array<string, list<mixed>>
+     */
     protected function getSniffTestsIgnoreEmptyStatement(): array
     {
         return [

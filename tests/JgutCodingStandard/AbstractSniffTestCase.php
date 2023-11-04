@@ -30,7 +30,7 @@ abstract class AbstractSniffTestCase extends TestCase
     }
 
     /**
-     * @param array<string, string, int, bool> $sniffProperties
+     * @param array<string, string|int|bool> $sniffProperties
      */
     protected function checkFile(string $filePath, array $sniffProperties = []): File
     {

@@ -18,7 +18,7 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
     /**
      * @dataProvider sniffProvider
      *
-     * @param array<string, mixed> $sniffProperties
+     * @param array<string, string|int|bool> $sniffProperties
      */
     public function testSniff(
         string $filePath,
@@ -38,6 +38,9 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
         }
     }
 
+    /**
+     * @return array<string, list<mixed>>
+     */
     public function sniffProvider(): array
     {
         return array_merge(
@@ -49,6 +52,9 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
         );
     }
 
+    /**
+     * @return array<string, list<mixed>>
+     */
     protected function getSniffTestsFixed(): array
     {
         return [
@@ -63,6 +69,9 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
         ];
     }
 
+    /**
+     * @return array<string, list<mixed>>
+     */
     protected function getSniffTestsDoubleUnderscore(): array
     {
         return [
@@ -101,6 +110,9 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
         ];
     }
 
+    /**
+     * @return array<string, list<mixed>>
+     */
     protected function getSniffTestsVisibility(): array
     {
         return [
@@ -123,6 +135,9 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
         ];
     }
 
+    /**
+     * @return array<string, list<mixed>>
+     */
     protected function getSniffTestsKebabCase(): array
     {
         return [
@@ -157,6 +172,9 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
         ];
     }
 
+    /**
+     * @return array<string, list<mixed>>
+     */
     protected function getSniffTestsDoubleUppercase(): array
     {
         return [
