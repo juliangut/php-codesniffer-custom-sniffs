@@ -45,7 +45,7 @@ class EmptyStatementSniff implements Sniff
         $tokens = $phpcsFile->getTokens();
         $token  = $tokens[$stackPtr];
 
-        if (isset($token['scope_opener']) === false) {
+        if (!array_key_exists('scope_opener', $token)) {
             return;
         }
 
