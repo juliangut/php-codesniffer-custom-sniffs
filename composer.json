@@ -28,7 +28,7 @@
         "grifart/phpstan-oneline": "~0.4",
         "infection/infection": "~0.24",
         "kubawerlos/php-cs-fixer-custom-fixers": "^3.7",
-        "overtrue/phplint": "^3.0|^4.0",
+        "overtrue/phplint": "^9.0.4",
         "phpcompatibility/php-compatibility": "^9.3",
         "phpmd/phpmd": "^2.10",
         "phpstan/extension-installer": "^1.1",
