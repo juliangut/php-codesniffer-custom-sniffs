@@ -25,17 +25,22 @@
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
         "friendsofphp/php-cs-fixer": "^3.1",
+        "grifart/phpstan-oneline": "~0.4",
         "infection/infection": "~0.24",
-        "juliangut/phpstan-config": "dev-master",
         "kubawerlos/php-cs-fixer-custom-fixers": "^3.7",
         "overtrue/phplint": "^3.0|^9.0",
         "phpcompatibility/php-compatibility": "^9.3",
         "phpmd/phpmd": "^2.10",
         "phpunit/phpunit": "^9.5",
         "povils/phpmnd": "^3.2",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-strict-rules": "^1.0",
         "roave/security-advisories": "dev-master",
         "sebastian/phpcpd": "^6.0",
-        "slevomat/coding-standard": "^8.2"
+        "slevomat/coding-standard": "^8.2",
+        "thecodingmachine/phpstan-strict-rules": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -52,6 +57,7 @@
         "sort-packages": true,
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true,
             "infection/extension-installer": true,
             "ocramius/package-versions": true
         }
