@@ -61,7 +61,7 @@ abstract class AbstractSniffTestCase extends TestCase
                 $formattedValue = $value ? 'true' : 'false';
             }
 
-            $ruleset->setSniffProperty($sniffClass, $property, $formattedValue);
+            $ruleset->setSniffProperty($sniffClass, $property, ['value' => $formattedValue, 'scope' => 'standard']);
         }
 
         $file = new LocalFile($filePath, $ruleset, $config);
