@@ -84,7 +84,7 @@ __catchIgnoreComment__ (string), catch statements may be allowed to be empty. Ad
 
 #### CamelCapsFunctionNameSniff
 
-Function and method names should be written un camelCaps
+Function and method names should be written in camelCaps
 
 ```diff
  <?php
