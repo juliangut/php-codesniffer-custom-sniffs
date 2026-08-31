@@ -136,6 +136,16 @@ final class EmptyStatementSniffTest extends AbstractSniffTestCase
                 ['catchIgnoreComment' => 'CustomIgnoreException'],
                 26,
             ],
+            'block comment ignored empty catch statement' => [
+                __DIR__ . '/data/EmptyStatementsIgnore.php',
+                [],
+                34,
+            ],
+            'doc comment ignored empty catch statement' => [
+                __DIR__ . '/data/EmptyStatementsIgnore.php',
+                [],
+                42,
+            ],
         ];
     }
 }

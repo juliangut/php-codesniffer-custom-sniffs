@@ -26,3 +26,19 @@ try {
 } catch (Throwable $exception) {
     // CustomIgnoreException
 }
+
+try {
+    if (\PHP_VERSION_ID >= 80_000) {
+        $supported = true;
+    }
+} catch (Throwable $exception) {
+    /* @ignoreException */
+}
+
+try {
+    if (\PHP_VERSION_ID >= 80_000) {
+        $supported = true;
+    }
+} catch (Throwable $exception) {
+    /** @ignoreException */
+}
