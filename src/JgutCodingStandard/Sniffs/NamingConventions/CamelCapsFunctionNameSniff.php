@@ -171,7 +171,7 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
 
         $errorData = [$functionName];
 
-        if (preg_match('/^__[^_]/', $functionName) !== 0) {
+        if (preg_match('/^__[^_]/', $functionName) === 1) {
             $magicPart = mb_strtolower(mb_substr($functionName, 2));
             if (\array_key_exists($magicPart, $this->magicFunctions)) {
                 return;
@@ -183,6 +183,8 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
                 'FunctionDoubleUnderscore',
                 $errorData,
             );
+
+            return;
         }
 
         if (!Common::isCamelCaps($functionName, false, true, $this->strict)) {
@@ -198,6 +200,6 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
             return;
         }
 
-        $phpcsFile->recordMetric($stackPtr, 'CamelCase method name', 'yes');
+        $phpcsFile->recordMetric($stackPtr, 'CamelCase function name', 'yes');
     }
 }
