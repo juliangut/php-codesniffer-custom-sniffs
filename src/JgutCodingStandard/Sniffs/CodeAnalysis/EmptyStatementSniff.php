@@ -21,6 +21,11 @@ class EmptyStatementSniff implements Sniff
 
     public function register()
     {
+        if (!\defined('T_MATCH')) {
+            // Loading Tokens defines PHPCS's polyfill token constants on PHP < 8.0
+            class_exists(Tokens::class);
+        }
+
         return [
             T_TRY,
             T_CATCH,
