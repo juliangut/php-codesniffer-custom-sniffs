@@ -17,7 +17,8 @@ use PHP_CodeSniffer\Util\Common;
 
 class CamelCapsVariableNameSniff extends AbstractVariableSniff
 {
-    private const VARIABLE_STRING_REGEX = '/[^\\\]\${?(?P<varName>[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/';
+    private const VARIABLE_STRING_REGEX
+        = '/(?<!\\\\)(?:\\\\\\\\)*\${?(?P<varName>[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/';
 
     /**
      * There must not be two consecutive capital letters.
@@ -103,27 +104,29 @@ class CamelCapsVariableNameSniff extends AbstractVariableSniff
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (preg_match_all(self::VARIABLE_STRING_REGEX, $tokens[$stackPtr]['content'], $matches) !== 0) {
-            foreach ($matches['varName'] as $varName) {
-                if (\array_key_exists($varName, $this->phpReservedVars)) { // Ignore PHP's reserved vars
-                    continue;
-                }
-
-                if (!Common::isCamelCaps($varName, false, true, $this->strict)) {
-                    $phpcsFile->recordMetric($stackPtr, 'CamelCase variable', 'no');
-
-                    $phpcsFile->addError(
-                        'Variable "%s" is not in camel caps format',
-                        $stackPtr,
-                        'StringNotCamelCaps',
-                        [$varName],
-                    );
-
-                    return;
-                }
-            }
+        if (preg_match_all(self::VARIABLE_STRING_REGEX, $tokens[$stackPtr]['content'], $matches) === 0) {
+            return;
         }
 
-        $phpcsFile->recordMetric($stackPtr, 'CamelCase variable', 'yes');
+        foreach ($matches['varName'] as $varName) {
+            if (\array_key_exists($varName, $this->phpReservedVars)) { // Ignore PHP's reserved vars
+                continue;
+            }
+
+            if (!Common::isCamelCaps($varName, false, true, $this->strict)) {
+                $phpcsFile->recordMetric($stackPtr, 'CamelCase variable', 'no');
+
+                $phpcsFile->addError(
+                    'Variable "%s" is not in camel caps format',
+                    $stackPtr,
+                    'StringNotCamelCaps',
+                    [$varName],
+                );
+
+                continue;
+            }
+
+            $phpcsFile->recordMetric($stackPtr, 'CamelCase variable', 'yes');
+        }
     }
 }

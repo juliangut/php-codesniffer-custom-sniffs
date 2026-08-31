@@ -48,7 +48,50 @@ final class CamelCapsVariableNameSniffTest extends AbstractSniffTestCase
             $this->getSniffTestsVisibility(),
             $this->getSniffTestsKebabCase(),
             $this->getSniffTestsDoubleUppercase(),
+            $this->getSniffTestsInString(),
         );
+    }
+
+    /**
+     * @return array<string, list<mixed>>
+     */
+    protected function getSniffTestsInString(): array
+    {
+        return [
+            'heredoc line starting variable' => [
+                __DIR__ . '/data/CamelCapsVariableNameInString.php',
+                [],
+                15,
+                'StringNotCamelCaps',
+                'Variable "snake_case_variable" is not in camel caps format',
+            ],
+            'variable after escaped backslash' => [
+                __DIR__ . '/data/CamelCapsVariableNameInString.php',
+                [],
+                18,
+                'StringNotCamelCaps',
+                'Variable "another_snake_case" is not in camel caps format',
+            ],
+            'escaped dollar is not a variable' => [
+                __DIR__ . '/data/CamelCapsVariableNameInString.php',
+                [],
+                20,
+            ],
+            'first of multiple variables in string' => [
+                __DIR__ . '/data/CamelCapsVariableNameInString.php',
+                [],
+                22,
+                'StringNotCamelCaps',
+                'Variable "first_invalid" is not in camel caps format',
+            ],
+            'second of multiple variables in string' => [
+                __DIR__ . '/data/CamelCapsVariableNameInString.php',
+                [],
+                22,
+                'StringNotCamelCaps',
+                'Variable "second_invalid" is not in camel caps format',
+            ],
+        ];
     }
 
     /**
