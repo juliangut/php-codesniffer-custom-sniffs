@@ -72,7 +72,8 @@ class EmptyStatementSniff implements Sniff
             if ($next !== false) {
                 $comment = null;
                 if ($tokens[$next]['code'] === T_COMMENT) {
-                    $comment = trim(preg_replace('/^(?:#|\/\/|\/\*+)|\*+\/$/', '', trim($tokens[$next]['content'])));
+                    $comment = preg_replace('/^(?:#|\/\/|\/\*+)|\*+\/$/', '', trim($tokens[$next]['content']));
+                    $comment = trim($comment ?? '');
                 } elseif ($tokens[$next]['code'] === T_DOC_COMMENT_OPEN_TAG) {
                     $commentCloser = $tokens[$next]['comment_closer'];
                     $comment = trim($phpcsFile->getTokensAsString($next + 1, $commentCloser - $next - 1));
