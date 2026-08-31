@@ -22,6 +22,7 @@ HEADER;
 $finder = Finder::create()
     ->ignoreDotFiles(false)
     ->exclude(['vendor'])
+    ->notPath('#tests/.+/data/.+#')
     ->in(__DIR__)
     ->name(__FILE__);
 

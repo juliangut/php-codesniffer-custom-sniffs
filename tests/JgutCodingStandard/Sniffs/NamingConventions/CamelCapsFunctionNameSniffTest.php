@@ -49,7 +49,29 @@ final class CamelCapsFunctionNameSniffTest extends AbstractSniffTestCase
             $this->getSniffTestsVisibility(),
             $this->getSniffTestsKebabCase(),
             $this->getSniffTestsDoubleUppercase(),
+            $this->getSniffTestsAnonymousClass(),
         );
+    }
+
+    /**
+     * @return array<string, list<mixed>>
+     */
+    protected function getSniffTestsAnonymousClass(): array
+    {
+        return [
+            'anonymous class correct camel caps method name' => [
+                __DIR__ . '/data/CamelCapsFunctionNameAnonymousClass.php',
+                ['strict' => true],
+                13,
+            ],
+            'anonymous class method kebab_case name' => [
+                __DIR__ . '/data/CamelCapsFunctionNameAnonymousClass.php',
+                ['strict' => true],
+                18,
+                'ScopeNotCamelCaps',
+                'Public method name "[Anonymous Class]::kebab_case_method" is not in camel caps format',
+            ],
+        ];
     }
 
     /**

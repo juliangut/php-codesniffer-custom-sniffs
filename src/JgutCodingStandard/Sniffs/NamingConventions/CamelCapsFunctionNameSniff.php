@@ -94,12 +94,11 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
         }
 
         $methodName = $phpcsFile->getDeclarationName($stackPtr);
-        if ($methodName === null) { // Ignore closures
+        if ($methodName === null || $methodName === '') { // Ignore closures
             return;
         }
 
-        $className = $phpcsFile->getDeclarationName($currScope) ?? '[Anonymous Class]';
-        $errorData = [$className . '::' . $methodName];
+        $errorData = [$this->getScopeName($phpcsFile, $currScope) . '::' . $methodName];
 
         if (preg_match('/^__[^_]/', $methodName) === 1) {
             $magicPart = mb_strtolower(mb_substr($methodName, 2));
@@ -160,6 +159,15 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
         }
 
         $phpcsFile->recordMetric($stackPtr, 'CamelCase method name', 'yes');
+    }
+
+    private function getScopeName(File $phpcsFile, int $currScope): string
+    {
+        $tokens = $phpcsFile->getTokens();
+
+        return $tokens[$currScope]['code'] === \T_ANON_CLASS
+            ? '[Anonymous Class]'
+            : (string) $phpcsFile->getDeclarationName($currScope);
     }
 
     protected function processTokenOutsideScope(File $phpcsFile, $stackPtr): void

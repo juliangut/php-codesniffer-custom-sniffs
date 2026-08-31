@@ -18,3 +18,14 @@ parameters:
   stubFiles:
     - stubs/FixerInterface.stub
     - stubs/ConfigurableFixerInterface.stub
+  # Sniffs run on php_codesniffer 3 and 4, which differ on deprecations and nullability
+  reportUnmatchedIgnoredErrors: false
+  ignoreErrors:
+    - identifier: staticProperty.deprecated
+      path: src/*
+    - identifier: property.deprecated
+      path: src/*
+    - identifier: identical.alwaysFalse
+      path: src/*
+    - identifier: cast.useless
+      path: src/*
