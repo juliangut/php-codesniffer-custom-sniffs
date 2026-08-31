@@ -21,7 +21,7 @@ class EmptyStatementSniff implements Sniff
 
     public function register()
     {
-        $tokens = [
+        return [
             T_TRY,
             T_CATCH,
             T_FINALLY,
@@ -33,13 +33,8 @@ class EmptyStatementSniff implements Sniff
             T_IF,
             T_SWITCH,
             T_WHILE,
+            T_MATCH,
         ];
-
-        if (\PHP_VERSION_ID >= 80_000) {
-            $tokens[] = T_MATCH;
-        }
-
-        return $tokens;
     }
 
     /**
@@ -57,7 +52,7 @@ class EmptyStatementSniff implements Sniff
         $next = $phpcsFile->findNext(
             Tokens::$emptyTokens,
             $token['scope_opener'] + 1,
-            $token['scope_closer'] - 1,
+            $token['scope_closer'],
             true
         );
 
